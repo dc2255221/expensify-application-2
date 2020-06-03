@@ -1,0 +1,53 @@
+{
+  "name": "boilerplate-v1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Donald Chen",
+  "license": "MIT",
+  "scripts": {
+    "serve": "live-server public/",
+    "build:dev": "webpack",
+    "build:prod": "webpack -p --env production",
+    "dev-server": "webpack-dev-server --open",
+    "test": "jest --config=jest.config.json"
+  },
+  "dependencies": {
+    "css-loader": "0.28.4",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.5.0",
+    "express": "^4.17.1",
+    "jest": "^26.0.1",
+    "live-server": "^1.2.0",
+    "moment": "^2.26.0",
+    "node-sass": "^4.14.1",
+    "normalize.css": "^8.0.1",
+    "raf": "^3.4.1",
+    "react": "^16.13.1",
+    "react-addons-shallow-compare": "^15.6.2",
+    "react-dates": "^21.8.0",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.1",
+    "react-test-renderer": "^16.13.1",
+    "redux": "^4.0.5",
+    "sass-loader": "^8.0.2",
+    "style-loader": "0.18.2",
+    "uuid": "^8.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.40",
+    "@babel/core": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.0.0-beta.40",
+    "babel-loader": "^8.0.0-beta.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
