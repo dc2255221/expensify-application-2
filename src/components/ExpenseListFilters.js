@@ -7,6 +7,8 @@ import { DateRangePicker } from 'react-dates';
 
 export class ExpenseListFilters extends React.Component {
     state = {
+        startDateId: uuidv1(),
+        endDateId: uuidv1(),
         calendarFocused: null, // can be null, 'startDate', or 'endDate'
     };
     onDatesChange = ({ startDate, endDate }) => {
@@ -42,8 +44,8 @@ export class ExpenseListFilters extends React.Component {
                     <option value="amount">Amount</option>
                 </select>
                 <DateRangePicker
-                    startDateId={uuidv1()}
-                    endDateId={uuidv1()}
+                    startDateId={this.state.startDateId}
+                    endDateId={this.state.endDateId}
                     startDate={this.props.filters.startDate}
                     endDate={this.props.filters.endDate}
                     onDatesChange={this.onDatesChange}

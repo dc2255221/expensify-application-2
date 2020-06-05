@@ -36,7 +36,7 @@ export default class ExpenseForm extends React.Component {
     }
     onDateChange = (createdAt) => {
         if (createdAt) { // this will prevent user from being able to clear date value
-            this.setState(() => ({createdAt}));
+            this.setState(() => ({ createdAt }));
         }
     }
     onFocusChange = ({ focused }) => {

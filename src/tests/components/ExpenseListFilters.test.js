@@ -26,6 +26,9 @@ beforeEach(() => {
 });
 
 test('should render ExpenseListFilters correctly', () => {
+    // const startDateId = wrapper.state('startDateId');
+    // const endDateId = wrapper.state('endDateId');
+    // wrapper.setState({ startDateId, endDateId });
     expect(toJSON(wrapper)).toMatchSnapshot();
 });
 
