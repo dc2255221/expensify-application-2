@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should correctly show total for expeneses based on filters 1`] = `
+<p>
+   Viewing 
+  0
+   
+  expenses
+   totalling 
+  $0.00
+   
+</p>
+`;
+
+exports[`should correctly show total for expenses based on filters 1`] = `
+<p>
+   Viewing 
+  0
+   
+  expenses
+   totalling 
+  $0.00
+   
+</p>
+`;
+
+exports[`should correctly show total for multiple expenses 1`] = `
+<p>
+   Viewing 
+  3
+   
+  expenses
+   totalling 
+  $1,141.95
+   
+</p>
+`;
+
+exports[`should correctly show total for one expense 1`] = `
+<p>
+   Viewing 
+  0
+   
+  expenses
+   totalling 
+  $0.00
+   
+</p>
+`;
