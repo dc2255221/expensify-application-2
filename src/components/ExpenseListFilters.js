@@ -44,8 +44,8 @@ export class ExpenseListFilters extends React.Component {
                     <option value="amount">Amount</option>
                 </select>
                 <DateRangePicker
-                    startDateId={this.state.startDateId}
-                    endDateId={this.state.endDateId}
+                    startDateId={'start-date-input'}
+                    endDateId={'end-date-input'}
                     startDate={this.props.filters.startDate}
                     endDate={this.props.filters.endDate}
                     onDatesChange={this.onDatesChange}

@@ -14,4 +14,11 @@ const altFilters = {
     endDate: moment(0).add(3, 'days')
 };
 
-export { filters, altFilters }; // named exports 
+const altFilters2 = {
+    text: 'r',
+    sortBy: 'amount',
+    startDate: moment(0).subtract(10, 'days'),
+    endDate: moment(0).add(10, 'days')
+}
+
+export { filters, altFilters, altFilters2 }; // named exports 

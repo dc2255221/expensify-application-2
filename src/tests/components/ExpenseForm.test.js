@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import moment from 'moment';
 import toJSON from 'enzyme-to-json';
+import { SingleDatePicker } from 'react-dates';
 import ExpenseForm from '../../components/ExpenseForm';
 import expenses from '../fixtures/expenses';
 
@@ -77,15 +78,17 @@ test('should call onSubmit prop for valid form submission', () => {
 });
 
 test('should set new date on date change', () => {
+    const onSubmitSpy = jest.fn();
     const now = moment(0);
-    const wrapper = shallow(<ExpenseForm/>);
-    wrapper.find('SingleDatePicker').prop('onDateChange')(now);
+    const wrapper = shallow(<ExpenseForm onSubmit={onSubmitSpy}/>);
+    wrapper.find(SingleDatePicker).prop('onDateChange')(now);
     expect(wrapper.state('createdAt')).toEqual(now);
 });
 
 test('should set calendar focus on change', () => {
+    const onSubmitSpy = jest.fn();
     const focused = true;
-    const wrapper = shallow(<ExpenseForm/>);
-    wrapper.find('SingleDatePicker').prop('onFocusChange')({ focused });
+    const wrapper = shallow(<ExpenseForm onSubmit={onSubmitSpy}/>);
+    wrapper.find(SingleDatePicker).prop('onFocusChange')({ focused });
     expect(wrapper.state('calendarFocused')).toBe(focused);
 });

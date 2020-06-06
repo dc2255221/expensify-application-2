@@ -4,21 +4,20 @@ import toJSON from 'enzyme-to-json';
 import { ExpenseSummary } from '../../components/ExpenseSummary';
 import getVisibleExpenses from '../../selectors/expenses';
 import expenses from '../fixtures/expenses';
-import {filters, altFilters} from '../fixtures/filters';
+import {altFilters2} from '../fixtures/filters';
 
 test('should correctly show total for one expense', () => {
-    const wrapper = shallow(<ExpenseSummary expenses={[]}/>);
+    const wrapper = shallow(<ExpenseSummary expenses={[expenses[0]]}/>);
     expect(toJSON(wrapper)).toMatchSnapshot();
 });
 
 test('should correctly show total for multiple expenses', () => {
-    const defaultFilteredExpenses = getVisibleExpenses(expenses, filters);
-    const wrapper = shallow(<ExpenseSummary expenses={defaultFilteredExpenses}/>);
+    const wrapper = shallow(<ExpenseSummary expenses={expenses}/>);
     expect(toJSON(wrapper)).toMatchSnapshot();
 });
 
-test('should correctly show total for expenses based on filters', () => {
-    const filteredExpenses = getVisibleExpenses(expenses, altFilters);
+test('should correctly show total for filtered expenses', () => {
+    const filteredExpenses = getVisibleExpenses(expenses, altFilters2);
     const wrapper = shallow(<ExpenseSummary expenses={filteredExpenses}/>);
     expect(toJSON(wrapper)).toMatchSnapshot();
 });
