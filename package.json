@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate-v1",
+  "name": "expensify2",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Donald Chen",
@@ -24,6 +24,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "css-loader": "0.28.4",
     "express": "^4.17.1",
+    "firebase": "^7.15.0",
     "moment": "^2.26.0",
     "node-sass": "^4.14.1",
     "normalize.css": "^8.0.1",
@@ -37,6 +38,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
     "redux": "^4.0.5",
+    "redux-mock-store": "^1.5.4",
+    "redux-thunk": "^2.3.0",
     "sass-loader": "^8.0.2",
     "style-loader": "0.18.2",
     "uuid": "^8.1.0",
