@@ -1,5 +1,4 @@
 // store action creators for expenses
-import {v1 as uuid} from "uuid"; 
 import database from '../firebase/firebase';
 
 // ADD_EXPENSE Action Creator
@@ -34,3 +33,28 @@ export const editExpense = (id, updates) => ({
     id,
     updates
 });
+
+// SET_EXPENSES
+export const setExpenses = (expenses) => ({
+    type: 'SET_EXPENSES',
+    expenses
+});
+
+export const startSetExpenses = () => {
+    return (dispatch) => {
+        return database.ref('expenses').once('value').then((snapshot) => {
+            const expenses = [];
+            snapshot.forEach(childSnapshot => {
+                expenses.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                });
+            });
+            dispatch(setExpenses(expenses));
+        });
+    };
+};
+// 1) fetch all expense data once from firebase db
+// 2) parse that data into an array
+// 3) dispatch SET_EXPENSES
+
