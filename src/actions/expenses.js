@@ -42,6 +42,14 @@ export const editExpense = (id, updates) => ({
     updates
 });
 
+export const startEditExpense = (id, updates) => {
+    return (dispatch) => {
+        return database.ref(`expenses/${id}`).update(updates).then(() => {
+            dispatch(editExpense(id, updates));
+        });
+    }
+}
+
 // SET_EXPENSES
 export const setExpenses = (expenses) => ({
     type: 'SET_EXPENSES',
@@ -62,7 +70,3 @@ export const startSetExpenses = () => {
         });
     };
 };
-// 1) fetch all expense data once from firebase db
-// 2) parse that data into an array
-// 3) dispatch SET_EXPENSES
-
