@@ -1,15 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startLogin } from '../actions/auth';
+import { BoxLayout, BoxLayoutBox, Title, Button } from '../styles/LoginPage';
 
 export const LoginPage = ({ startLogin }) => (
-    <div className="box-layout">
-        <div className="box-layout__box">
-            <h1 className="box-layout__title"> Expensify </h1>
+    <BoxLayout>
+        <BoxLayoutBox>
+            <Title> Expensify </Title>
             <p> It's time to get your expenses under control </p>
-            <button className="login-button" onClick={startLogin}> Login with Google </button>
-        </div>
-    </div>
+            <Button className="login-button" onClick={startLogin}> Login with Google </Button>
+        </BoxLayoutBox>
+    </BoxLayout>
 );
 
 const mapDispatchToProps = (dispatch) => ({

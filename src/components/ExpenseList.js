@@ -3,20 +3,29 @@ import { connect } from 'react-redux'; // used to create a new HOC that connects
 // When you connect component to redux store, its reactive, which means as store changes, your component will be rerendered with new values 
 import ExpenseListItem from './ExpenseListItem';
 import selectExpenses from '../selectors/expenses';
-
+import { ContentContainer, ListHeader, ListBody, ShowForMobile, ShowForDesktop, NoExpenseMessage } from '../styles/ExpenseList';
 
 export const ExpenseList = (props) => (
-    <div>
-        {
-            props.expenses.length === 0 ? (
-            <p>No expenses</p>
-            ) : ( 
-                props.expenses.map((expense) => 
-                <ExpenseListItem {...expense} key={expense.id}/>
+    <ContentContainer>
+        <ListHeader>
+            <ShowForMobile> Expenses </ShowForMobile>
+            <ShowForDesktop> Expense </ShowForDesktop>
+            <ShowForDesktop> Amount </ShowForDesktop>
+        </ListHeader>
+        <ListBody>
+            {
+                props.expenses.length === 0 ? (
+                <NoExpenseMessage>
+                    <span>No expenses</span>
+                </NoExpenseMessage>
+                ) : ( 
+                    props.expenses.map((expense) => 
+                    <ExpenseListItem {...expense} key={expense.id}/>
+                    )
                 )
-            )
-        }
-    </div>
+            }
+        </ListBody>
+    </ContentContainer>
 );
 
 // define things we want off of store...

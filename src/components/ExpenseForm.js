@@ -6,8 +6,8 @@
 
 import React from 'react';
 import moment from 'moment';
-import { v1 as uuidv1 } from 'uuid';
 import { SingleDatePicker } from 'react-dates';
+import { StyledForm, Error, StyledInput, StyledDiv, StyledTextarea, StyledButton } from '../styles/ExpenseForm';
 
 export default class ExpenseForm extends React.Component {
     constructor(props) {
@@ -59,22 +59,22 @@ export default class ExpenseForm extends React.Component {
     }
     render(){
         return (
-            <div>
-                {this.state.error && <p>{this.state.error}</p>}
-                <form onSubmit={this.onSubmit}>
-                    <input
-                        type="text"
-                        placeholder="Description"
-                        autoFocus
-                        value={this.state.description}
-                        onChange={this.onDescriptionChange}
-                    />
-                    <input
-                        type="number"
-                        placeholder="Amount"
-                        value={this.state.amount}
-                        onChange={this.onAmountChange}
-                    />
+            <StyledForm onSubmit={this.onSubmit}>
+                {this.state.error && <Error>{this.state.error}</Error>}
+                <StyledInput
+                    type="text"
+                    placeholder=" Description"
+                    autoFocus
+                    value={this.state.description}
+                    onChange={this.onDescriptionChange}
+                />
+                <StyledInput
+                    type="number"
+                    placeholder=" Amount"
+                    value={this.state.amount}
+                    onChange={this.onAmountChange}
+                />
+                <StyledDiv>
                     <SingleDatePicker
                         id={"date-input"}
                         date={this.state.createdAt}
@@ -84,15 +84,17 @@ export default class ExpenseForm extends React.Component {
                         numberOfMonths={1}
                         isOutsideRange={() => false}
                     />
-                    <textarea 
-                        placeholder="Add a note for your expense (optional)"
-                        value={this.state.note}
-                        onChange={this.onNoteChange}
-                    >
-                    </textarea>
-                    <button> Add Expense </button>
-                </form>
-            </div>
+                </StyledDiv>
+                <StyledTextarea 
+                    placeholder="Add a note for your expense (optional)"
+                    value={this.state.note}
+                    onChange={this.onNoteChange}
+                >
+                </StyledTextarea>
+                <div>
+                    <StyledButton> Save Expense </StyledButton>
+                </div>
+            </StyledForm>
         )
     }
 }

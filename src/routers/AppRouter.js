@@ -9,12 +9,13 @@ import EditExpensePage from '../components/EditExpensePage';
 import NotFoundPage from '../components/NotFoundPage';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
+import { BaseStyledDiv } from '../styles/AppRouter';
 
 export const history = createBrowserHistory();
 
 const AppRouter = () => (
     <Router history={history}>
-        <div>
+        <BaseStyledDiv>
             {/* <Switch> looks through its children <Route>s and renders the first one that matches the current URL. */}
             <Switch> 
                 <PublicRoute exact path="/" component={LoginPage}/>
@@ -23,7 +24,7 @@ const AppRouter = () => (
                 <PrivateRoute path="/edit/:id" component={EditExpensePage}/>
                 <Route component={NotFoundPage}/>
             </Switch>
-        </div>
+        </BaseStyledDiv>
     </Router>
 );
   

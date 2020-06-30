@@ -20,6 +20,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
 import { startEditExpense, startRemoveExpense } from '../actions/expenses';
+import { PageHeader, ContentContainer, StyledH1, StyledButton } from '../styles/EditExpensePage';
 
 export class EditExpensePage extends React.Component {
   onSubmit = (expense) => {
@@ -33,11 +34,18 @@ export class EditExpensePage extends React.Component {
   render() {
     return (
         <div>
-          <ExpenseForm
-            expense={this.props.expense}
-            onSubmit={this.onSubmit}
-          />
-          <button onClick={this.onRemove}> Remove </button> 
+          <PageHeader>
+            <ContentContainer>
+              <StyledH1> Edit Expense </StyledH1>
+            </ContentContainer>
+          </PageHeader>
+          <ContentContainer>
+            <ExpenseForm
+              expense={this.props.expense}
+              onSubmit={this.onSubmit}
+            />
+            <StyledButton onClick={this.onRemove}> Remove Expense </StyledButton> 
+          </ContentContainer>
         </div>
     );
   };

@@ -4,6 +4,7 @@ import { v1 as uuidv1 } from 'uuid';
 import { setTextFilter, sortByAmount, sortByDate, setStartDate, setEndDate } from '../actions/filters';
 import 'react-dates/initialize';
 import { DateRangePicker } from 'react-dates';
+import { ContentContainer, InputGroup, InputGroupItem, StyledInput, StyledSelect } from '../styles/ExpenseListFilters';
 
 export class ExpenseListFilters extends React.Component {
     state = {
@@ -30,32 +31,41 @@ export class ExpenseListFilters extends React.Component {
     };
     render() {
         return (
-            <div>
-                <input // This is a controlled input where the value is controlled by Javascript
-                    type="text" 
-                    value={this.props.filters.text} 
-                    onChange={this.onTextChange}
-                />
-                <select 
-                    value={this.props.filters.sortBy} 
-                    onChange={this.onSortChange}
-                >
-                    <option value="date">Date</option>
-                    <option value="amount">Amount</option>
-                </select>
-                <DateRangePicker
-                    startDateId={'start-date-input'}
-                    endDateId={'end-date-input'}
-                    startDate={this.props.filters.startDate}
-                    endDate={this.props.filters.endDate}
-                    onDatesChange={this.onDatesChange}
-                    focusedInput={this.state.calendarFocused}
-                    onFocusChange={this.onFocusChange}
-                    numberOfMonths={1}
-                    isOutsideRange={() => false}
-                    showClearDates={true}
-                />
-            </div>
+            <ContentContainer>
+                <InputGroup>
+                    <InputGroupItem>
+                        <StyledInput
+                            type="text" 
+                            placeholder= " Search expenses"
+                            value={this.props.filters.text} 
+                            onChange={this.onTextChange}
+                        />
+                    </InputGroupItem>
+                    <InputGroupItem>
+                        <StyledSelect 
+                            value={this.props.filters.sortBy} 
+                            onChange={this.onSortChange}
+                        >
+                            <option value="date">Date</option>
+                            <option value="amount">Amount</option>
+                        </StyledSelect>
+                    </InputGroupItem>
+                    <InputGroupItem>
+                        <DateRangePicker
+                            startDateId={'start-date-input'}
+                            endDateId={'end-date-input'}
+                            startDate={this.props.filters.startDate}
+                            endDate={this.props.filters.endDate}
+                            onDatesChange={this.onDatesChange}
+                            focusedInput={this.state.calendarFocused}
+                            onFocusChange={this.onFocusChange}
+                            numberOfMonths={1}
+                            isOutsideRange={() => false}
+                            showClearDates={true}
+                        />
+                    </InputGroupItem>
+                </InputGroup>
+            </ContentContainer>
         )
     }
 }

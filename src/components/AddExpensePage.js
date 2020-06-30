@@ -14,6 +14,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
 import { startAddExpense } from '../actions/expenses';
+import { PageHeader, ContentContainer, StyledH1 } from '../styles/AddExpensePage';
 
 export class AddExpensePage extends React.Component {
   onSubmit = (expense) => {
@@ -23,10 +24,16 @@ export class AddExpensePage extends React.Component {
   render() {
     return (
       <div>
-        <h1>Add Expense</h1>
-        <ExpenseForm
-          onSubmit={this.onSubmit}
-        />
+        <PageHeader>
+          <ContentContainer>
+            <StyledH1> Add Expense </StyledH1> 
+          </ContentContainer>
+        </PageHeader>
+        <ContentContainer>
+          <ExpenseForm
+            onSubmit={this.onSubmit}
+          />
+        </ContentContainer>
       </div>
     );
   };
