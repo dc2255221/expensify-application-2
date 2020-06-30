@@ -1,38 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render ExpenseList with empty message 1`] = `
-<div>
-  <p>
-    No expenses
-  </p>
-</div>
+<styled.div>
+  <styled.div>
+    <styled.div>
+       Expenses 
+    </styled.div>
+    <styled.div>
+       Expense 
+    </styled.div>
+    <styled.div>
+       Amount 
+    </styled.div>
+  </styled.div>
+  <styled.div>
+    <styled.div>
+      <span>
+        No expenses
+      </span>
+    </styled.div>
+  </styled.div>
+</styled.div>
 `;
 
 exports[`should render ExpenseList with expenses 1`] = `
-<div>
-  <ExpenseListItem
-    amount={195}
-    createdAt={0}
-    description="Gum"
-    id="1"
-    key="1"
-    note=""
-  />
-  <ExpenseListItem
-    amount={109500}
-    createdAt={-345600000}
-    description="Rent"
-    id="2"
-    key="2"
-    note=""
-  />
-  <ExpenseListItem
-    amount={4500}
-    createdAt={345600000}
-    description="Credit Card"
-    id="3"
-    key="3"
-    note=""
-  />
-</div>
+<styled.div>
+  <styled.div>
+    <styled.div>
+       Expenses 
+    </styled.div>
+    <styled.div>
+       Expense 
+    </styled.div>
+    <styled.div>
+       Amount 
+    </styled.div>
+  </styled.div>
+  <styled.div>
+    <ExpenseListItem
+      amount={195}
+      createdAt={0}
+      description="Gum"
+      id="1"
+      key="1"
+      note=""
+    />
+    <ExpenseListItem
+      amount={109500}
+      createdAt={-345600000}
+      description="Rent"
+      id="2"
+      key="2"
+      note=""
+    />
+    <ExpenseListItem
+      amount={4500}
+      createdAt={345600000}
+      description="Credit Card"
+      id="3"
+      key="3"
+      note=""
+    />
+  </styled.div>
+</styled.div>
 `;

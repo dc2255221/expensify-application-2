@@ -1,43 +1,88 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should correctly show total for filtered expenses 1`] = `
-<div>
-  <h1>
-     Viewing 
-    2
-     
-    expenses
-     totalling 
-    $1,140.00
-     
-  </h1>
-</div>
+<styled.div>
+  <styled.div>
+    <styled.h1>
+       Viewing
+      <styled.span>
+         
+        2
+         
+      </styled.span>
+      expenses
+       totalling
+      <styled.span>
+         
+        $1,140.00
+         
+      </styled.span>
+    </styled.h1>
+    <styled.div>
+      <Styled(Link)
+        to="/create"
+      >
+         Add Expense 
+      </Styled(Link)>
+    </styled.div>
+  </styled.div>
+</styled.div>
 `;
 
 exports[`should correctly show total for multiple expenses 1`] = `
-<div>
-  <h1>
-     Viewing 
-    3
-     
-    expenses
-     totalling 
-    $1,141.95
-     
-  </h1>
-</div>
+<styled.div>
+  <styled.div>
+    <styled.h1>
+       Viewing
+      <styled.span>
+         
+        3
+         
+      </styled.span>
+      expenses
+       totalling
+      <styled.span>
+         
+        $1,141.95
+         
+      </styled.span>
+    </styled.h1>
+    <styled.div>
+      <Styled(Link)
+        to="/create"
+      >
+         Add Expense 
+      </Styled(Link)>
+    </styled.div>
+  </styled.div>
+</styled.div>
 `;
 
 exports[`should correctly show total for one expense 1`] = `
-<div>
-  <h1>
-     Viewing 
-    1
-     
-    expense
-     totalling 
-    $1.95
-     
-  </h1>
-</div>
+<styled.div>
+  <styled.div>
+    <styled.h1>
+       Viewing
+      <styled.span>
+         
+        1
+         
+      </styled.span>
+      expense
+       totalling
+      <styled.span>
+         
+        $1.95
+         
+      </styled.span>
+    </styled.h1>
+    <styled.div>
+      <Styled(Link)
+        to="/create"
+      >
+         Add Expense 
+      </Styled(Link)>
+    </styled.div>
+  </styled.div>
+</styled.div>
 `;
