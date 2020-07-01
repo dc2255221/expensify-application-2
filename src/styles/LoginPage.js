@@ -25,7 +25,21 @@ export const Title = styled.h1`
     line-height: 1;
 `; 
 
-export const Button = styled.button`
+export const ButtonContainer = styled.div`
+    display: flex;
+`;
+
+export const GoogleButton = styled.button`
+    background: ${Colors.red};
+    border: none;
+    color: white;
+    font-size: ${FontSize.large};
+    font-weight: 300;
+    padding: ${Spacing.s_size};
+    cursor: pointer;
+`;
+
+export const FacebookButton = styled.button`
     background: ${Colors.blue};
     border: none;
     color: white;
