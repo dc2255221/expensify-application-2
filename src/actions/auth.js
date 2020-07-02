@@ -1,14 +1,33 @@
 // This action is what will start our login. 
 
 import { firebase, googleAuthProvider, facebookAuthProvider } from '../firebase/firebase';
-import ErrorMessage from '../components/ErrorMessage';
 
 export const login = (uid) => ({
     type: 'LOGIN',
     uid
 });
 
-export const startLoginGoogle = () => {
+export const startSignupWithEmailAndPassword = () => {
+    return () => {
+        return firebase.auth().createUserWithEmailAndPassword(email, password).catch((error) => {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+        });
+    };
+};
+
+export const startLoginWithEmailAndPassword = () => {
+    return () => {
+        return firebase.auth().signInWithEmailAndPassword(email, password).catch((error) => {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+          });
+    };
+};
+
+export const startLoginWithGoogle = () => {
     return () => {
         console.log('started Google');
         return firebase.auth().signInWithPopup(googleAuthProvider).catch((error) => { // Handle Errors here
@@ -34,7 +53,7 @@ export const startLoginGoogle = () => {
     };
 };
 
-export const startLoginFacebook = () => {
+export const startLoginWithFacebook = () => {
     return () => {
         console.log('started Facebook');
         return firebase.auth().signInWithPopup(facebookAuthProvider).catch((error) => { 

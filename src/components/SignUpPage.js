@@ -1,16 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startLoginWithGoogle, startLoginWithFacebook } from '../actions/auth';
-import { BoxLayout, BoxLayoutBox, Title, StyledForm, StyledInput, ForgotLink, LoginButton, ButtonContainer, GoogleButton, FacebookButton, StyledSpan, Footer, FooterText, SignUpLink, Line } from '../styles/Authentication';
+import { BoxLayout, BoxLayoutBox, Title, StyledForm, StyledInput, LoginButton, ButtonContainer, GoogleButton, FacebookButton, StyledSpan, Footer, FooterText, LoginLink, Line } from '../styles/Authentication';
 
-export const LoginPage = ({ startLoginWithGoogle, startLoginWithFacebook }) => (
+export const SignUpPage = ({ startLoginWithGoogle, startLoginWithFacebook }) => (
     <BoxLayout>
         <BoxLayoutBox>
-            <Title> Log In </Title>
+            <Title> Join Expensify </Title>
             <StyledForm>
+                <StyledInput placeholder="First name"></StyledInput>
+                <StyledInput placeholder="Last name"></StyledInput>
                 <StyledInput placeholder="Email"></StyledInput>
                 <StyledInput placeholder="Password"></StyledInput>
-                <ForgotLink to='/forgot'> Forgot password? </ForgotLink>
                 <LoginButton> Continue </LoginButton>
             </StyledForm>
             <Line/>
@@ -26,8 +27,8 @@ export const LoginPage = ({ startLoginWithGoogle, startLoginWithFacebook }) => (
             </ButtonContainer>
             <Line/>
             <Footer>
-                <FooterText> Don't have an account? </FooterText>
-                <SignUpLink to="/signup"> Sign Up </SignUpLink>
+                <FooterText> Already a member? </FooterText>
+                <LoginLink to="/"> Log in </LoginLink>
             </Footer>
         </BoxLayoutBox>
     </BoxLayout>
@@ -38,4 +39,4 @@ const mapDispatchToProps = (dispatch) => ({
     startLoginWithFacebook: () => dispatch(startLoginWithFacebook())
 });
 
-export default connect(undefined, mapDispatchToProps)(LoginPage);
+export default connect(undefined, mapDispatchToProps)(SignUpPage);
