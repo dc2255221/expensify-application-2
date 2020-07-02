@@ -27,9 +27,14 @@ export const Title = styled.h1`
 
 export const ButtonContainer = styled.div`
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 ${Spacing.s_size};
 `;
 
 export const GoogleButton = styled.button`
+    display: flex;
+    align-items: center;
     background: ${Colors.red};
     border: none;
     color: white;
@@ -40,6 +45,8 @@ export const GoogleButton = styled.button`
 `;
 
 export const FacebookButton = styled.button`
+    display: flex;
+    align-items: center;
     background: ${Colors.blue};
     border: none;
     color: white;
@@ -47,4 +54,8 @@ export const FacebookButton = styled.button`
     font-weight: 300;
     padding: ${Spacing.s_size};
     cursor: pointer;
+`;
+
+export const StyledSpan = styled.span`
+    margin-left: ${Spacing.xs_size}
 `;

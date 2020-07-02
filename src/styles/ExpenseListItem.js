@@ -39,4 +39,3 @@ export const AmountH3 = styled.h3`
         padding-left: ${Spacing.s_size}; 
     }
 `;
-

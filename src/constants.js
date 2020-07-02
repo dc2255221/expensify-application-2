@@ -2,7 +2,7 @@ export const Colors = {
     dark_grey: '#333',
     grey: '#666',
     red: '#d43f3a',
-    blue: '#286090',
+    blue: '#4267b2',
     dark_blue: '#364051',
     off_white: '#f7f7f7',
     dark_off_white: '#e8e1e1'
@@ -14,6 +14,7 @@ export const FontSize = {
 };
 
 export const Spacing = {
+    xs_size: '0.6rem',
     s_size: '1.2rem',
     m_size: '1.6rem',
     l_size: '3.2rem',
