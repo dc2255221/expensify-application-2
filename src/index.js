@@ -22,31 +22,34 @@ const jsx = (
     </Provider>
   </React.StrictMode>
 );
+
 let hasRendered = false;
-const renderApp = () => {
+export const renderApp = () => {
   if (!hasRendered) {
     ReactDOM.render(jsx, document.getElementById('app'));
     hasRendered = true;
   }
 };
 
+// renderApp();
 ReactDOM.render(<LoadingPage/>, document.getElementById('app'));
 
 firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    store.dispatch(login(user.uid));
-    // console.log('uid', user.uid); 
+  if (user) { // user is signed in
+    const uid = user.uid;
+    console.log('uid', uid); 
+    store.dispatch(login(uid));
+    console.log('log in');
     store.dispatch(startSetExpenses()).then(() => {
       renderApp();
       if (history.location.pathname === '/') {
         history.push('/dashboard');
       }
     });
-    // console.log('log in');
-  } else {
+  } else { // user is signed out
     store.dispatch(logout());
+    console.log('log out');
     renderApp();
     history.push('/');
-    // console.log('log out');
   }
 });
