@@ -24,7 +24,7 @@ export const StyledSpan = styled.span`
 `;
 
 export const StyledLink = styled(Link)`
-    background: ${Colors.blue};
+    background: ${Colors.dark_blue};
     border: none;
     color: white;
     display: inline-block;

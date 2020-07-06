@@ -28,6 +28,16 @@ export const StyledDiv = styled.div`
     font-weight: 300;
 `;
 
+export const StyledLabel = styled.label`
+`;
+
+export const StyledSelect = styled.select`
+    border: 1px solid #cacccd;
+    height: 50px;
+    font-size: ${FontSize.large};
+    font-weight: 300;
+`;
+
 export const StyledTextarea = styled.textarea`
     border: 1px solid #cacccd;
     height: 50px;
@@ -36,7 +46,7 @@ export const StyledTextarea = styled.textarea`
 `;
 
 export const StyledButton = styled.button`
-    background: ${Colors.blue};
+    background: ${Colors.dark_blue};
     color: white;
     border: 1px solid #cacccd;
     height: 50px;

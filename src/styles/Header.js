@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Colors, FontSize, Spacing } from '../constants';
 
 export const StyledHeader = styled.header`
-  background:  ${Colors.blue};
+  background:  ${Colors.dark_blue};
 `;
 
 export const ContentContainer = styled.div`

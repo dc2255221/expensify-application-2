@@ -10,6 +10,24 @@ export const Colors = {
     dark_off_white: '#e8e1e1'
 };
 
+export const CatColors = {
+    light_green: '#6dc24b',
+    med_light_green: '#02ac51',
+    green: '#00934d',
+    med_dark_green: '#017749',
+    dark_green: '#164733',
+    blue: '#004990',
+    yellow: '#ffcc00',
+    light_orange: 'e7a614',
+    orange: '#ea7504',
+    dark_orange: '#ba4703',
+    pink: '#ab0360',
+    dark_pink: '#850b56',
+    purple: '#683cb6',
+    dark_purple: '4a126f',
+    grey: '#9a8b7f'
+} 
+
 export const FontSize = {
     large: '1.2rem',
     small: '0.8rem'
