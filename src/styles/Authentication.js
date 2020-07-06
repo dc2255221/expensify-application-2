@@ -120,3 +120,15 @@ export const LoginLink = styled(Link)`
     margin-bottom: ${Spacing.xs_size};
     color: ${Colors.green};
 `;
+
+export const ErrorMessage = styled.span`
+    color: ${Colors.red};
+    font-size: ${FontSize.small};
+    margin-bottom: ${Spacing.xs_size};
+`;
+
+export const Message = styled.span`
+    color: ${Colors.blue};
+    font-size: ${FontSize.small};
+    margin-bottom: ${Spacing.xs_size};
+`;

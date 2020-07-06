@@ -4,8 +4,7 @@ import { Provider } from 'react-redux'; // allows us to provide the store to all
 import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { startSetExpenses } from './actions/expenses';
-import { login, logout } from './actions/auth';
-
+import { receiveLogin, receiveLogout } from './actions/auth';
 // import 'normalize.css/normalize.css';
 // import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
@@ -36,9 +35,7 @@ ReactDOM.render(<LoadingPage/>, document.getElementById('app'));
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) { // user is signed in
-    const uid = user.uid;
-    console.log('uid', uid); 
-    store.dispatch(login(uid));
+    store.dispatch(receiveLogin(user));
     console.log('log in');
     store.dispatch(startSetExpenses()).then(() => {
       renderApp();
@@ -47,7 +44,7 @@ firebase.auth().onAuthStateChanged((user) => {
       }
     });
   } else { // user is signed out
-    store.dispatch(logout());
+    store.dispatch(receiveLogout());
     console.log('log out');
     renderApp();
     history.push('/');

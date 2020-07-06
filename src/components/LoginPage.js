@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { startLoginWithGoogle, startLoginWithFacebook, startLoginWithEmailAndPassword } from '../actions/auth';
-import { BoxLayout, BoxLayoutBox, Title, StyledForm, StyledInput, ForgotLink, LoginButton, ButtonContainer, GoogleButton, FacebookButton, StyledSpan, Footer, FooterText, SignUpLink, Line } from '../styles/Authentication';
+import { startLoginWithGoogle, startLoginWithFacebook, startLoginWithEmailAndPassword, getPassword } from '../actions/auth';
+import { BoxLayout, BoxLayoutBox, Title, StyledForm, StyledInput, ForgotLink, LoginButton, ButtonContainer, GoogleButton, FacebookButton, StyledSpan, Footer, FooterText, SignUpLink, Line, ErrorMessage } from '../styles/Authentication';
+import { startEditExpense } from '../actions/expenses';
 
 export class LoginPage extends React.Component {
     state = {
         email: '',
-        password: '',
-        error: ''
+        password: ''
     }
     onEmailChange = (e) => {
         const email = e.target.value;
@@ -18,7 +18,6 @@ export class LoginPage extends React.Component {
         this.setState({ password });
     }
     onSubmit = (e) => {
-        console.log('onSubmit in LoginPage is called');
         e.preventDefault();
         this.props.startLoginWithEmailAndPassword(this.state.email, this.state.password);
     }
@@ -28,7 +27,6 @@ export class LoginPage extends React.Component {
                 <BoxLayoutBox>
                     <Title> Log In </Title>
                     <StyledForm onSubmit={this.onSubmit}>
-                        {/* {this.state.error && <Error>{this.state.error}</Error>} */}
                         <StyledInput 
                             placeholder="Email" 
                             type="email"
@@ -43,16 +41,17 @@ export class LoginPage extends React.Component {
                             value={this.state.password}
                             onChange={this.onPasswordChange}
                         />
+                        {this.props.loginError && <ErrorMessage>{this.props.loginError.message}</ErrorMessage>}
                         <ForgotLink to='/forgot'> Forgot password? </ForgotLink>
                         <LoginButton type="submit" onSubmit={this.onSubmit}> Continue </LoginButton>
                     </StyledForm>
                     <Line/>
                     <ButtonContainer>
-                        <FacebookButton onClick={startLoginWithFacebook}> 
+                        <FacebookButton onClick={this.props.startLoginWithFacebook}> 
                             <img src="/images/facebook.svg" alt="facebook-logo" width="20" height="30"/>
                             <StyledSpan> Continue </StyledSpan>
                         </FacebookButton>
-                        <GoogleButton onClick={startLoginWithGoogle}> 
+                        <GoogleButton onClick={this.props.startLoginWithGoogle}> 
                             <img src="/images/google.svg" alt="google-logo" width="20" height="30"/>
                             <StyledSpan> Continue </StyledSpan> 
                         </GoogleButton>
@@ -68,10 +67,14 @@ export class LoginPage extends React.Component {
     }
 }
 
+const mapStateToProps = (state) => ({
+    loginError: state.auth.loginError
+});
+
 const mapDispatchToProps = (dispatch) => ({
     startLoginWithGoogle: () => dispatch(startLoginWithGoogle()),
     startLoginWithFacebook: () => dispatch(startLoginWithFacebook()),
-    startLoginWithEmailAndPassword: (email, password) => dispatch(startLoginWithEmailAndPassword(email, password))
+    startLoginWithEmailAndPassword: (email, password) => dispatch(startLoginWithEmailAndPassword(email, password)),
 });
 
-export default connect(undefined, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
