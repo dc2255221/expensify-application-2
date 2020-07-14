@@ -8,6 +8,23 @@ import { CatColors } from '../constants';
 
 export const ExpenseChart = ({ expenses }) => {
     const data = {
+        labels: [
+            'Home and Utilities',
+            'Transportation',
+            'Groceries',
+            'Personal and Family Care',
+            'Health',
+            'Insurance',
+            'Restaurants and Dining',
+            'Shopping and Entertainment',
+            'Travel',
+            'Cash, Checks, and Misc',
+            'Giving',
+            'Business Expenses',
+            'Education',
+            'Finance',
+            'uncategorized'
+        ],
         datasets: [
             {
                 data: [
@@ -44,31 +61,14 @@ export const ExpenseChart = ({ expenses }) => {
                     CatColors.dark_purple,
                     CatColors.grey
                 ],
-                legend: false
+                borderWidth: 5
             }
-        ],
-        labels: [
-            'Home and Utilities',
-            'Transportation',
-            'Groceries',
-            'Personal and Family Care',
-            'Health',
-            'Insurance',
-            'Restaurants and Dining',
-            'Shopping and Entertainment',
-            'Travel',
-            'Cash, Checks, and Misc',
-            'Giving',
-            'Business Expenses',
-            'Education',
-            'Finance',
-            'uncategorized'
         ]
     }
     return (
             !!expenses.length &&
             <ChartContainer>
-                <Doughnut data={data}/>
+                <Doughnut data={data} options={{ responsive: true }}/>
             </ChartContainer> 
     )
 };
