@@ -18,9 +18,14 @@ export const ExpenseList = (props) => (
                 <NoExpenseMessage>
                     <span>No expenses</span>
                 </NoExpenseMessage>
-                ) : ( 
+                ) : ( props.category ? 
+                    props.expenses.map((expense) => {
+                        if (expense.category === props.category) {
+                            return <ExpenseListItem {...expense} key={expense.id}/>
+                        }
+                    }) :
                     props.expenses.map((expense) => 
-                    <ExpenseListItem {...expense} key={expense.id}/>
+                        <ExpenseListItem {...expense} key={expense.id}/>
                     )
                 )
             }
@@ -30,10 +35,14 @@ export const ExpenseList = (props) => (
 
 // define things we want off of store...
 // we will also have access to dispatch as a prop in our connected components 
+
 const mapStateToProps = (state) => { 
     return {
-        expenses: selectExpenses(state.expenses, state.filters)
+        expenses: selectExpenses(state.expenses, state.filters),
+        category: state.filters.category
     };
 };
  
 export default connect(mapStateToProps)(ExpenseList);
+
+// export default ExpenseList;

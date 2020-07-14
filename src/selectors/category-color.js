@@ -2,25 +2,25 @@ import { CatColors } from '../constants';
 
 export default (category) => {
     switch (category) {
-        case 'home-utilities':
+        case 'home-and-utilities':
             return CatColors.light_green; 
         case 'transportation':
             return CatColors.med_light_green;
         case 'groceries':
             return CatColors.green
-        case 'personal-family-care':
+        case 'personal-and-family-care':
             return CatColors.med_light_green;
         case 'health':
             return CatColors.dark_green;
         case 'insurance':
             return CatColors.blue;
-        case 'restaurants-dining':
+        case 'restaurants-and-dining':
             return CatColors.yellow;
-        case 'shopping-entertainment':
+        case 'shopping-and-entertainment':
             return CatColors.light_orange;
         case 'travel':
             return CatColors.orange;
-        case 'cash-checks-misc':
+        case 'cash-checks-and-misc':
             return CatColors.dark_orange;
         case 'giving':
             return CatColors.pink;

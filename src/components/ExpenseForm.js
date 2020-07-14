@@ -96,20 +96,20 @@ export default class ExpenseForm extends React.Component {
                     onChange={this.onCategoryChange}
                 >
                     <option value="category"> Category </option>
-                    <option value="home-utilities"> Home and Utilities </option>
-                    <option value="personal-family-care"> Personal and Family Care </option>
+                    <option value="home-and-utilities"> Home and Utilities </option>
+                    <option value="personal-and-family-care"> Personal and Family Care </option>
                     <option value="groceries"> Groceries </option>
-                    <option value="restaurants-dining"> Restaurants and Dining </option>
+                    <option value="restaurants-and-dining"> Restaurants and Dining </option>
                     <option value="health"> Health </option>
                     <option value="insurance"> Insurance </option>
                     <option value="transportation"> Transportation </option>
-                    <option value="shopping-entertainment"> Shopping and Entertainment </option>
+                    <option value="shopping-and-entertainment"> Shopping and Entertainment </option>
                     <option value="travel"> Travel </option>
                     <option value="education"> Education </option>
                     <option value="giving"> Giving </option>
                     <option value="business-expenses"> Business Expenses </option>
                     <option value="finance"> Finance </option>
-                    <option value="cash-checks-misc"> Cash, Checks, and Misc </option>
+                    <option value="cash-checks-and-misc"> Cash, Checks, and Misc </option>
                 </StyledSelect>
                 <StyledTextarea 
                     placeholder="Add a note for your expense (optional)"

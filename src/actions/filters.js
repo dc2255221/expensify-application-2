@@ -1,5 +1,15 @@
 // store action creators for filters
 
+// SET_CATEGORY Action Creator
+export const setCategory = (category) => ({
+    type: 'SET_CATEGORY',
+    category
+});
+
+// RESET_CATEGORY Action Creator
+export const resetCategory = () => ({
+    type: 'RESET_CATEGORY'
+});
 
 // SET_TEXT_FILTER Action Creator
 export const setTextFilter = (text = '') => ({
