@@ -18,7 +18,7 @@ export const CatColors = {
     dark_green: '#164733',
     blue: '#004990',
     yellow: '#ffcc00',
-    light_orange: 'e7a614',
+    light_orange: '#e7a614',
     orange: '#ea7504',
     dark_orange: '#ba4703',
     pink: '#ab0360',

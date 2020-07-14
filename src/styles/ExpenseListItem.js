@@ -12,7 +12,8 @@ export const StyledLink = styled(Link)`
     text-decoration: none;
     transition: background .3s ease; 
     &:hover {
-        background: ${Colors.off_white}
+        color: ${Colors.off_white};
+        background: ${props => props.color};
     }
     @media (min-width: ${Spacing.desktop_breakpoint}) {
         align-items: center;

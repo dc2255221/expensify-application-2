@@ -11,7 +11,7 @@ export const Header = ({ startLogout }) => (
           <StyledLink to="/dashboard"> 
             <StyledH1>Expensify</StyledH1> 
           </StyledLink>
-          <Link/>
+          {/* <Link/>  */}
           <StyledButton onClick={startLogout}> Logout </StyledButton>
         </HeaderContent>
       </ContentContainer>
