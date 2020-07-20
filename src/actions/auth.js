@@ -1,58 +1,63 @@
 // This action is what will start our login. 
 import { firebase, googleAuthProvider, facebookAuthProvider } from '../firebase/firebase';
+import {
+    SIGNUP_REQUEST,
+    SIGNUP_SUCCESS,
+    SIGNUP_ERROR,
+    LOGIN_REQUEST,
+    LOGIN_SUCCESS,
+    LOGIN_ERROR,
+    LOGOUT_REQUEST,
+    LOGOUT_SUCCESS,
+    LOGOUT_ERROR,
+    SEND_PASSWORD_RESET_EMAIL
+} from './types';
 
 export const requestSignup = () => ({
-    type: 'SIGNUP_REQUEST'
+    type: SIGNUP_REQUEST
 });
 
 export const receiveSignup = (user) => ({
-    type: 'SIGNUP_SUCCESS',
+    type: SIGNUP_SUCCESS,
     user
 });
 
 export const signupError = (error) => ({
-    type: 'SIGNUP_ERROR',
+    type: SIGNUP_ERROR,
     error
 }) 
 
 export const requestLogin = () => ({
-    type: 'LOGIN_REQUEST'
+    type: LOGIN_REQUEST
 });
 
 export const receiveLogin = (user) => ({
-    type: 'LOGIN_SUCCESS',
+    type: LOGIN_SUCCESS,
     user
 });
 
 export const loginError = (error) => ({
-    type: 'LOGIN_ERROR',
+    type: LOGIN_ERROR,
     error
 });
 
 export const requestLogout = () => ({
-    type: 'LOGOUT_REQUEST'
+    type: LOGOUT_REQUEST
 })
 
 export const receiveLogout = () => ({
-    type: 'LOGOUT_SUCCESS'
+    type: LOGOUT_SUCCESS
 });
 
 export const logoutError = (error) => ({
-    type: 'LOGOUT_ERROR',
+    type: LOGOUT_ERROR,
     error
 }); 
 
 export const sendPasswordResetEmail = () => ({
-    type: 'SEND_PASSWORD_RESET_EMAIL'
+    type: SEND_PASSWORD_RESET_EMAIL
 });
 
-// export const verifyRequest = () => ({
-//     type: 'VERIFY_REQUEST'
-// });
-  
-// export const verifySuccess = () => ({
-//     type: 'VERIFY_SUCCESS'
-// });
 
 export const startSignupWithEmailAndPassword = (email, password) => {
     console.log('startSignupWithEmailAndPassword is called');

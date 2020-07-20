@@ -1,5 +1,5 @@
 {
-  "name": "expensify2",
+  "name": "expensify",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Donald Chen",
@@ -11,7 +11,8 @@
     "dev-server": "webpack-dev-server --open",
     "test": "cross-env NODE_ENV=test jest --config=jest.config.json --watch",
     "start": "node server/server.js",
-    "heroku-postbuild": "npm run build:prod"
+    "heroku-postbuild": "npm run build:prod",
+    "mongo": "node database/mongoose.js"
   },
   "dependencies": {
     "@babel/cli": "^7.0.0-beta.40",

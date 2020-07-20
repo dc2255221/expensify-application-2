@@ -1,11 +1,17 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const validator = require('validator'); // input validation 
+const bcrypt = require('bcryptjs'); // hash passwords
+const jwt = require('jsonwebtoken'); // authentication 
 const expense = require('./expense');
+const keys = require('../configs/keys');
 
 const userSchema = new mongoose.Schema({
-    name: {
+    firstName: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    lastName: {
         type: String,
         required: true,
         trim: true
@@ -30,6 +36,9 @@ const userSchema = new mongoose.Schema({
         validate(value) {
             if (value.toLowerCase().includes("password")) {
                 throw new Error('Password cannot contain password')
+            }
+            if (!value.match("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")) {
+                throw new Error('Password must meet complexity requirement')
             }
         }
     },
@@ -67,11 +76,11 @@ userSchema.methods.toJSON = function () {
     return userObject;
 }
 
-// Generate auth token and add it to user's tokens array
+// Sign token and add it to user's tokens array
 userSchema.methods.generateAuthToken = async function () {
     console.log("generateAuthToken is called");
     const user = this;
-    const token = jwt.sign({ _id: user._id.toString() }, 'thisismysecret');
+    const token = jwt.sign({ _id: user._id.toString() }, keys.secretOrKey, { expiresIn: 31556926 /* 1 year in seconds */ });
     user.tokens = user.tokens.concat({ token });
     await user.save();
     return token; 
@@ -82,11 +91,11 @@ userSchema.statics.findByCredentials = async (email, password) => {
     console.log('findByCredentials is called');
     const user = await User.findOne({ email })
     if (!user) {
-        throw new Error('Unable to login');
+        throw new Error('User does not exist');
     }
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-        throw new Error('Unable to login');
+        throw new Error('Password is incorrect');
     }
     return user;
 }

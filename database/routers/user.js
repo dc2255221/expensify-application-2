@@ -5,11 +5,17 @@ const auth = require('../middleware/auth');
 
 // signup user - create user profile
 router.post('/users', async (req, res) => {
-    const user = new User(req.body);
     try {
-        await user.save();
-        const token = await user.generateAuthToken();
-        res.status(201).send({ user, token });
+        const user = await User.findOne({ email: req.body.email });
+        if (user) {
+            throw new Error('Email already exists');
+        } else {
+            newUser = new User(req.body);
+        }
+        // Hash password before saving in database
+        await newUser.save();
+        const token = await new User.generateAuthToken();
+        res.status(201).send({ newUser, token });
     } catch (e) {
         res.status(400).send(e);
     }
@@ -18,6 +24,7 @@ router.post('/users', async (req, res) => {
 // login user
 router.post('/users/login', async (req, res) => {
     try {
+        // Find user with input email and validate whether password matches hashed password in db  
         const user = await User.findByCredentials(req.body.email, req.body.password);
         const token = await user.generateAuthToken();
         res.send({ user, token });
@@ -58,7 +65,7 @@ router.post('/users/logoutAll', auth, async (req, res) => {
 // update profile of currently authenticated user
 router.patch('/users/me', auth, async (req, res) => {
     const updates = Object.keys(req.body);
-    const allowedUpdates = ["name", "email", "password", "age"];
+    const allowedUpdates = ["firstName", "lastName", "email", "password", "age"];
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
     if (!isValidOperation) {
         return res.status(400).send({ error: 'Invalid updates' });
@@ -86,6 +93,7 @@ router.delete('/users/me', auth, async (req, res) => {
         // if (!user) {
         //     return res.status(404).send();
         // }
+        // Delete user expenses when user is removed
         await req.user.remove();
         res.send(req.user);
     } catch (e) {

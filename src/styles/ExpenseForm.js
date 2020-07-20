@@ -46,7 +46,7 @@ export const StyledTextarea = styled.textarea`
 `;
 
 export const StyledButton = styled.button`
-    background: ${Colors.dark_blue};
+    background: ${Colors.blue};
     color: white;
     border: 1px solid #cacccd;
     height: 50px;
