@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { startLogout } from '../actions/auth';
 import { resetCategory } from '../actions/filters';
 import { StyledHeader, ContentContainer, HeaderContent, StyledLink, StyledH1, StyledButton } from '../styles/Header';
-import Link from './Link';
+// import Link from './Link';
 
 export const Header = ({ startLogout, resetCategory }) => (
     <StyledHeader>

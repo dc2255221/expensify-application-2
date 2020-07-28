@@ -9,7 +9,8 @@ export const addExpense = (expense) => ({
 });
 
 export const startAddExpense = (expenseData = {}) => {
-    return (dispatch, getState) => {
+    console.log('startAddExpense is called')
+    return async (dispatch, getState) => {
         const uid = getState().auth.user.uid;
         const { description = '', note = '', amount = 0, category='uncategorized', createdAt = 0 } = expenseData;
         const expense = { description, note, amount, category, createdAt };
@@ -20,6 +21,11 @@ export const startAddExpense = (expenseData = {}) => {
                 ...expense
             }));
         })
+        // let res = await axios.post('/expenses', expense);
+        // dispatch(addExpense({
+        //     id: res.id,
+        //     ...expense
+        // }));
     };
 };
 

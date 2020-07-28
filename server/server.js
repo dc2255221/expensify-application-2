@@ -9,8 +9,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, '..', 'public');
 
-// const { receivePublicToken, getTransactions } = require("./controller");
-
 app.use(express.static(publicPath));
 
 // // Get the public token and exchange it for an access token
@@ -19,6 +17,7 @@ app.use(express.static(publicPath));
 // app.get("/transactions", getTransactions);
 
 app.use(express.json());
+
 app.use(userRouter);
 app.use(expenseRouter);
 

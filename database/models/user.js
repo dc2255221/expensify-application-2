@@ -3,7 +3,7 @@ const validator = require('validator'); // input validation
 const bcrypt = require('bcryptjs'); // hash passwords
 const jwt = require('jsonwebtoken'); // authentication 
 const expense = require('./expense');
-const keys = require('../configs/keys');
+const keys = require('../../configs/keys');
 
 const userSchema = new mongoose.Schema({
     firstName: {
@@ -42,15 +42,6 @@ const userSchema = new mongoose.Schema({
             }
         }
     },
-    age: {
-        type: Number,
-        default: 0,
-        validate(value) {
-            if (value < 0) {
-                throw new Error('Age must be a positive number');
-            }
-        }
-    },
     tokens: [{
         token: { 
             type: String,
@@ -80,7 +71,7 @@ userSchema.methods.toJSON = function () {
 userSchema.methods.generateAuthToken = async function () {
     console.log("generateAuthToken is called");
     const user = this;
-    const token = jwt.sign({ _id: user._id.toString() }, keys.secretOrKey, { expiresIn: 31556926 /* 1 year in seconds */ });
+    const token = jwt.sign({ _id: user._id.toString() }, keys.secretOrKey);
     user.tokens = user.tokens.concat({ token });
     await user.save();
     return token; 

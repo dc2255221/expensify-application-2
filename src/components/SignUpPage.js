@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startLoginWithGoogle, startLoginWithFacebook, startSignupWithEmailAndPassword, signupError } from '../actions/auth';
+// import { registerUser } from '../actions/authMongo';
 import { BoxLayout, BoxLayoutBox, Title, StyledForm, StyledInput, LoginButton, ButtonContainer, GoogleButton, FacebookButton, StyledSpan, Footer, FooterText, LoginLink, Line, ErrorMessage } from '../styles/Authentication';
 
 export class SignUpPage extends React.Component {
@@ -30,16 +31,14 @@ export class SignUpPage extends React.Component {
         console.log('onSubmit in SignUpPage is called');
         e.preventDefault();
         if (!this.state.firstName || !this.state.lastName || !this.state.email || !this.state.password) {
-            this.props.signupError({ message: 'Please leave no fields empty!'});
+            this.props.setSignupError({ message: 'Please leave no fields empty!'});
         } else if (!this.state.password.match("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")) {
-            this.props.signupError({
+            this.props.setSignupError({
                 message: 'Please provide a valid password with at least one upper case English letter, one lower case English letter, one digit from 0-9, one special character #?!@$%^&*-, and minimum eight characters in length'
             });
         } else {
-            this.setState({ error: '' });
-            const { firstName, lastName, email, password } = this.state;
-            console.log('will now call startSignupWithEmailAndPassword');
-            this.props.startSignupWithEmailAndPassword({ firstName, lastName, email, password });
+            this.props.startSignupWithEmailAndPassword(this.state);
+            // this.props.registerUser(this.state);
         }
     }
     render() {
@@ -111,9 +110,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+    // registerUser: (userData) => dispatch(registerUser(userData)),
     startLoginWithGoogle: () => dispatch(startLoginWithGoogle()),
     startLoginWithFacebook: () => dispatch(startLoginWithFacebook()),
-    signupError: (error) => dispatch(signupError(error)),
+    setSignupError: (error) => dispatch(signupError(error)),
     startSignupWithEmailAndPassword: (userData) => dispatch(startSignupWithEmailAndPassword(userData.email, userData.password))
 });
 

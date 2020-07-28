@@ -1,7 +1,7 @@
 // We need to connect this component to redux store so we can dispatch action 
 // Search the array of expenses for the expense with given id 
 // We do need to set up a mapToStateToProps function bc we need to give component access to the expense object
-// We will be able to access the state which is great bc that is where expenses array lives
+// We will be able to access the state bc that is where expenses array lives
 // But, we also need to pass in props as second argument bc we are searching for props.match.params.id
 // We will add one new prop expense and will use current props to search expenses array
 // Find allows us to search through an array looking for a single item. We determine whether item is found by returning true from the callback

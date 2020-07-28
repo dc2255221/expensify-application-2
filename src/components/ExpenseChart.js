@@ -48,7 +48,7 @@ const mapStateToProps = (state) => ({
         selectTotalByCategory( selectExpenses(state.expenses, state.filters), 'travel'),
         selectTotalByCategory( selectExpenses(state.expenses, state.filters), 'cash-checks-and-misc'),
         selectTotalByCategory( selectExpenses(state.expenses, state.filters), 'giving'),
-        selectTotalByCategory( selectExpenses(state.expenses, state.filters), 'business- selectExpenses(state.expenses, state.filters) '),
+        selectTotalByCategory( selectExpenses(state.expenses, state.filters), 'business-expenses'),
         selectTotalByCategory( selectExpenses(state.expenses, state.filters), 'education'),
         selectTotalByCategory( selectExpenses(state.expenses, state.filters), 'finance'),
         selectTotalByCategory( selectExpenses(state.expenses, state.filters), 'uncategorized')

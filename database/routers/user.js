@@ -1,104 +1,36 @@
 const express = require('express');
 const router = new express.Router();
-const User = require('../models/user');
+// const User = require('../models/user');
 const auth = require('../middleware/auth');
+const { 
+    registerUser, 
+    loginUser, 
+    getUserProfile, 
+    logoutUser, 
+    logoutAll, 
+    updateUserProfile, 
+    deleteUser 
+} = require('../controllers/user');
 
-// signup user - create user profile
-router.post('/users', async (req, res) => {
-    try {
-        const user = await User.findOne({ email: req.body.email });
-        if (user) {
-            throw new Error('Email already exists');
-        } else {
-            newUser = new User(req.body);
-        }
-        // Hash password before saving in database
-        await newUser.save();
-        const token = await new User.generateAuthToken();
-        res.status(201).send({ newUser, token });
-    } catch (e) {
-        res.status(400).send(e);
-    }
-})
+// signup user
+router.post('/users', registerUser)
 
 // login user
-router.post('/users/login', async (req, res) => {
-    try {
-        // Find user with input email and validate whether password matches hashed password in db  
-        const user = await User.findByCredentials(req.body.email, req.body.password);
-        const token = await user.generateAuthToken();
-        res.send({ user, token });
-    } catch (e) {
-        res.status(400).send({ error: "Unable to login"});
-    }
-})
+router.post('/users/login', loginUser)
 
 // read profile of currently authenticated user
-router.get('/users/me', auth, async (req, res) => {
-    res.send(req.user);
-})
+router.get('/users/me', auth, getUserProfile)
 
 // logout currently authenticated user's current session 
-router.post('/users/logout', auth, async (req, res) => {
-    try {
-        req.user.tokens = req.user.tokens.filter((token) => {
-            return token.token !== req.token;
-        })
-        await req.user.save();
-        res.send();
-    } catch (e) {
-        res.status(500).send();
-    }
-})
+router.post('/users/logout', auth, logoutUser)
 
 // logout currently authenticated user from of all sessions
-router.post('/users/logoutAll', auth, async (req, res) => {
-    try {
-        req.user.tokens = [];
-        await req.user.save();
-        res.send();
-    } catch (e) {
-        res.status(500).send();
-    }
-})
+router.post('/users/logoutAll', auth, logoutAll)
 
 // update profile of currently authenticated user
-router.patch('/users/me', auth, async (req, res) => {
-    const updates = Object.keys(req.body);
-    const allowedUpdates = ["firstName", "lastName", "email", "password", "age"];
-    const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
-    if (!isValidOperation) {
-        return res.status(400).send({ error: 'Invalid updates' });
-    }
-    try {
-        // const user = await User.findById(req.params.id);
-        updates.forEach((update) => {
-            req.user[update] = req.body[update];
-        });
-        await req.user.save();
-        // const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
-        // if (!user) {
-        //     return res.status(404).send();
-        // }
-        res.send(req.user);
-    } catch (e) {
-        res.status(400).send(e);
-    }
-})
+router.patch('/users/me', auth, updateUserProfile)
 
 // delete profile of currently authenticated user
-router.delete('/users/me', auth, async (req, res) => {
-    try {
-        // const user = await User.findByIdAndDelete(req.user_id);
-        // if (!user) {
-        //     return res.status(404).send();
-        // }
-        // Delete user expenses when user is removed
-        await req.user.remove();
-        res.send(req.user);
-    } catch (e) {
-        res.status(500).send(e);
-    }
-})
+router.delete('/users/me', auth, deleteUser)
 
 module.exports = router;

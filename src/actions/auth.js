@@ -1,6 +1,7 @@
 // This action is what will start our login. 
 import { firebase, googleAuthProvider, facebookAuthProvider } from '../firebase/firebase';
 import {
+    SET_CURRENT_USER,
     SIGNUP_REQUEST,
     SIGNUP_SUCCESS,
     SIGNUP_ERROR,
@@ -12,6 +13,12 @@ import {
     LOGOUT_ERROR,
     SEND_PASSWORD_RESET_EMAIL
 } from './types';
+
+// Set logged in user
+export const setCurrentUser =(decoded) => ({
+    type: SET_CURRENT_USER,
+    user: decoded
+});
 
 export const requestSignup = () => ({
     type: SIGNUP_REQUEST
@@ -25,7 +32,7 @@ export const receiveSignup = (user) => ({
 export const signupError = (error) => ({
     type: SIGNUP_ERROR,
     error
-}) 
+}); 
 
 export const requestLogin = () => ({
     type: LOGIN_REQUEST
@@ -57,7 +64,6 @@ export const logoutError = (error) => ({
 export const sendPasswordResetEmail = () => ({
     type: SEND_PASSWORD_RESET_EMAIL
 });
-
 
 export const startSignupWithEmailAndPassword = (email, password) => {
     console.log('startSignupWithEmailAndPassword is called');

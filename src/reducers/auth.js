@@ -1,4 +1,5 @@
 import {
+    SET_CURRENT_USER,
     SIGNUP_REQUEST,
     SIGNUP_SUCCESS,
     SIGNUP_ERROR,
@@ -12,7 +13,7 @@ import {
 } from '../actions/types';
 
 const authReducersDefaultState = {
-    user: null,
+    currentUser: null,
     isSigningUp: false,
     isLoggingIn: false,
     isLoggingOut: false,
@@ -20,12 +21,17 @@ const authReducersDefaultState = {
     loginError: null,
     logoutError: null,
     isAuthenticated: false,
-    createdNewUser: false,
+    newUserIsCreated: false,
     sendPasswordResetEmail: false
 };
 
 export default (state = authReducersDefaultState, action) => {
     switch (action.type) {
+        case SET_CURRENT_USER:
+            return {
+                ...state,
+                currentUser: action.user
+            }
         case SIGNUP_REQUEST:
             return {
                 ...state,
@@ -37,15 +43,15 @@ export default (state = authReducersDefaultState, action) => {
             return {
                 ...state,
                 isSigningUp: false,
-                createdNewUser: true,
-                user: action.user
+                newUserIsCreated: true,
+                currentUser: action.user
             }
         case SIGNUP_ERROR:
             return {
                 ...state,
                 isSigningUp: false,
                 isAuthenticated: false,
-                createdNewUser: false,
+                newUserIsCreated: false,
                 signupError: action.error
             }
         case LOGIN_REQUEST:
@@ -60,7 +66,7 @@ export default (state = authReducersDefaultState, action) => {
                 ...state,
                 isLoggingIn: false,
                 isAuthenticated: true,
-                user: action.user,
+                currentUser: action.user,
                 sendPasswordResetEmail: false
             }
         case LOGIN_ERROR:
@@ -82,8 +88,8 @@ export default (state = authReducersDefaultState, action) => {
                 ...state,
                 isLoggingOut: false,
                 isAuthenticated: false,
-                createdNewUser: false,
-                user: null
+                newUserIsCreated: false,
+                currentUser: null
             }
         case LOGOUT_ERROR:
             return {

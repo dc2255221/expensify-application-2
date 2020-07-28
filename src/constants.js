@@ -24,7 +24,6 @@ export const Spacing = {
     desktop_breakpoint: '45rem'
 };
 
-
 export const CatColors = {
     light_green: '#6dc24b',
     med_light_green: '#02ac51',
