@@ -13,7 +13,7 @@ import {
 } from '../actions/types';
 
 const authReducersDefaultState = {
-    currentUser: null,
+    user: null,
     isSigningUp: false,
     isLoggingIn: false,
     isLoggingOut: false,
@@ -30,7 +30,7 @@ export default (state = authReducersDefaultState, action) => {
         case SET_CURRENT_USER:
             return {
                 ...state,
-                currentUser: action.user
+                user: action.user
             }
         case SIGNUP_REQUEST:
             return {
@@ -44,7 +44,7 @@ export default (state = authReducersDefaultState, action) => {
                 ...state,
                 isSigningUp: false,
                 newUserIsCreated: true,
-                currentUser: action.user
+                user: action.user
             }
         case SIGNUP_ERROR:
             return {
@@ -66,7 +66,7 @@ export default (state = authReducersDefaultState, action) => {
                 ...state,
                 isLoggingIn: false,
                 isAuthenticated: true,
-                currentUser: action.user,
+                user: action.user,
                 sendPasswordResetEmail: false
             }
         case LOGIN_ERROR:
@@ -89,7 +89,7 @@ export default (state = authReducersDefaultState, action) => {
                 isLoggingOut: false,
                 isAuthenticated: false,
                 newUserIsCreated: false,
-                currentUser: null
+                user: null
             }
         case LOGOUT_ERROR:
             return {

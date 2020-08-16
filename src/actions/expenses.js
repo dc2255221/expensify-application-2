@@ -10,7 +10,7 @@ export const addExpense = (expense) => ({
 
 export const startAddExpense = (expenseData = {}) => {
     console.log('startAddExpense is called')
-    return async (dispatch, getState) => {
+    return (dispatch, getState) => {
         const uid = getState().auth.user.uid;
         const { description = '', note = '', amount = 0, category='uncategorized', createdAt = 0 } = expenseData;
         const expense = { description, note, amount, category, createdAt };
