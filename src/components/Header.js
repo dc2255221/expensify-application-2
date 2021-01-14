@@ -10,7 +10,7 @@ export const Header = ({ startLogout, resetCategory }) => (
       <ContentContainer>
         <HeaderContent>
           <StyledLink to="/dashboard" onClick={resetCategory}> 
-            <StyledH1>Expensify</StyledH1> 
+            <StyledH1>Xpensify</StyledH1> 
           </StyledLink>
           {/* <Link/>  */}
           <StyledButton onClick={startLogout}> Logout </StyledButton>

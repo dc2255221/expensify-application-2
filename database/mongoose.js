@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-const db = require('../configs/keys').mongoURI;
+const db = require('../configs/keys').mongoURI; // DB Config
 
+// Connect to MongoDB
 mongoose.connect(db, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
