@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { startLoginWithGoogle, startLoginWithFacebook, startLoginWithEmailAndPassword, getPassword } from '../actions/auth';
+import { startLoginWithGoogle, startLoginWithFacebook, startLoginWithEmailAndPassword } from '../actions/auth';
 import { BoxLayout, BoxLayoutBox, Title, StyledForm, StyledInput, ForgotLink, LoginButton, ButtonContainer, GoogleButton, FacebookButton, StyledSpan, Footer, FooterText, SignUpLink, Line, ErrorMessage } from '../styles/Authentication';
-import { startEditExpense } from '../actions/expenses';
 
 export class LoginPage extends React.Component {
     state = {

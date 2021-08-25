@@ -11,20 +11,17 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, '..', 'public');
 
+// Serve up public folder containing index.html and bundle.js file
 app.use(express.static(publicPath));
 
-// // Get the public token and exchange it for an access token
-// app.post("/auth/public_token", receivePublicToken);
-// // Get Transactions
-// app.get("/transactions", getTransactions);
-
+// Parse incoming requests with JSON payload
 app.use(express.json());
 
-// Passport middleware
+// Initialize passport
 app.use(passport.initialize());
 
 // Passport config
-require("./config/passport")(passport);
+// require("./config/passport")(passport);
 
 // Routes
 app.use(userRouter);

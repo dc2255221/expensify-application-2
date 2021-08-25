@@ -30,7 +30,7 @@
     "firebase": "^7.15.0",
     "history": "^4.7.2",
     "jsonwebtoken": "^8.5.1",
-    "material-table": "^1.64.0",
+    "material-table": "^1.69.2",
     "moment": "^2.26.0",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.23",
